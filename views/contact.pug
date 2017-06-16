@@ -1,5 +1,9 @@
 extends template
 
 block content
-    h1 Contact Page
-    p  Contact Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem consequuntur sit, deleniti. Ipsum saepe culpa quam reprehenderit, minus totam aliquid cupiditate non odit numquam provident enim quas inventore nisi adipisci.
+    h1 Contact Us
+    form(method="POST")
+        input(type="text" name="name" placeholder="Your Name")
+        input(type="email" name="email" placeholder="you@whatev.com")
+        input(type="submit" value="Submit Form")
+    

@@ -26,6 +26,23 @@ app.get('/contact', function(req, res){
     res.render('contact', {title:'Contact'})
 })
 
+//Post the form
+app.post('/contact', function(req, res){
+    res.render('thankyou', {title:'Thanks!'})
+})
+
+
+app.get('/images', function(req, res){
+    res.render('images', {title:'Images'})
+})
+
+//This route is for the full image
+//it uses a route parameter
+app.get('/images/:id', function(req, res){
+    const fullImage = req.params.id
+    res.render('full-image', {title:`Image ${fullImage}`, id:fullImage})
+})
+
 //Tell the server how to start
 //Our server URL is localhost:3000
 //Our port will now use an environment variable if it's on 
