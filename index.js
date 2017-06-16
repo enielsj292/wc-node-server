@@ -1,11 +1,17 @@
 //Create a variable for express which will help run the server
 const express = require('express')
 
+//create a path variable which can find files on our server
+const path = require('path')
+
 //Use express to initialize our server application
 const app = express ()
 
 //Tell node to compile .pug files to HTML
 app.set('view engine', 'pug')
+
+//Tell node where our public/static assets are (css, js, images, etc.)
+app.use(express.static(path.join(__dirname, './public')))
 
 //Set up our Routes
 app.get('/', function(req, res){
@@ -22,7 +28,10 @@ app.get('/contact', function(req, res){
 
 //Tell the server how to start
 //Our server URL is localhost:3000
-app.listen(3000, function(){
-    console.log('Server is running on PORT 3000')
+//Our port will now use an environment variable if it's on 
+//heroku...otherwise, use 3000
+const port = process.env.PORT || 3000
+app.listen(port, function(){
+    console.log(`Server is running on PORT ${port}`)
 })
 
